@@ -13,8 +13,7 @@ def foods_random():
     random_meal = requests.get("http://www.themealdb.com/api/json/v1/1/random.php")
     data = json.loads(random_meal.text)
     res = {
-        "area": data["meals"][0]["strArea"],
-        "category": data["meals"][0]["strCategory"]
+        "data": data["meals"][0],
     }
     return res, 200
 
