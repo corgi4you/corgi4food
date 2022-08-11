@@ -4,19 +4,23 @@ function App() {
   const [data, setData] = useState([{}])
 
   useEffect(() => {
-    fetch("/foods/random").then(
-      res => res.json()
-    ).then(
-      data => {
-        setData(data)
-        console.log(data)
-      }
-    )
+    fetch("/foods/random")
+    .then(res => res.json())
+    .then(data => {
+      setData(data)
+      console.log(data)
+    })
   }, [])
 
   return (
     <div>
-      <p>{data}</p>
+      {
+        (typeof data.data === 'undefined') ? (
+          <p>Loading...</p>
+        ): (
+          <p>{data.data.strArea}</p>
+        )
+      }
     </div>
   )
 }
