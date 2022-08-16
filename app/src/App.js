@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from 'react'
+import ButtonLoad from './ButtonLoad'
 
 function App() {
   const [data, setData] = useState([{}])
-
+ 
   useEffect(() => {
     fetch("/foods/random")
     .then(res => res.json())
@@ -13,15 +14,7 @@ function App() {
   }, [])
 
   return (
-    <div>
-      {
-        (typeof data.data === 'undefined') ? (
-          <p>Loading...</p>
-        ): (
-          <p>{data.data.strArea}</p>
-        )
-      }
-    </div>
+    <ButtonLoad/>
   )
 }
 
